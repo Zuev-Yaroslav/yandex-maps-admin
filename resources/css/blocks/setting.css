@@ -1,0 +1,63 @@
+.setting {
+    font-weight: 600;
+    font-size: 12px;
+    color: #6C757D;
+}
+
+.setting__title {
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0.2px;
+    margin: 0 0 15px 0;
+}
+
+.setting__org-reviews-url-label {
+    display: block;
+    margin: 0 0 9px 0;
+}
+
+.setting__link {
+    color: #788397;
+    text-decoration: underline;
+    font-weight: 400;
+}
+
+.setting__input-text {
+    display: block;
+    color: #788397;
+    font-size: 12px;
+    font-weight: 400;
+    padding: 5px 14px 5px 14px;
+    border-radius: 6px;
+    border: 1px solid #DCE4EA;
+    margin: 0 0 2px 0;
+    max-width: 480px;
+    width: 100%;
+}
+
+.setting__input-text:focus {
+    outline: 2px solid #3b82f6;
+}
+
+.setting__success-message,
+.setting__validation-error {
+    color: #f61500;
+    font-size: 9px;
+    line-height: 12px;
+    margin: 0 0 4px 0;
+}
+
+.setting__success-message {
+    color: #5cb800;
+}
+
+.setting__save-button {
+    text-align: center;
+    font-weight: 600;
+    font-family: "Inter Semi Bold", sans-serif;
+    font-size: 14px;
+    color: #FFFFFF;
+    background-color: #339AF0;
+    padding:  5px 26px 5px 26px;
+    border-radius: 6px;
+}

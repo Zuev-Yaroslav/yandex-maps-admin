@@ -1,0 +1,7 @@
+.content {
+    padding: 17px 26px 17px 32px;
+    overflow-y: auto;
+    max-width: 1101px;
+    font-weight: 400;
+    font-size: 12px;
+}

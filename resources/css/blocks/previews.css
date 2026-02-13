@@ -1,0 +1,119 @@
+/* Основной контейнер и ссылки */
+.previews {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14px;
+
+}
+
+.previews__yandex-map-link {
+    border-radius: 12px;
+    gap: 6px;
+    align-items: center;
+    display: inline-flex;
+    border: 1px solid #DCE4EA;
+    padding: 3px 6px;
+    margin: 0 0 10px 0;
+}
+
+.previews__yandex-map-icon {
+}
+
+/* Обертка отзывов и список */
+.reviews__wrapper {
+    display: grid;
+    gap: 21px;
+    grid-template-columns: auto 210px;
+    align-items: start;
+}
+
+.reviews-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.reviews-list__item {
+
+}
+
+/* Карточка отзыва */
+.review-card {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #E0E7EC;
+    box-shadow: 0 3px 6px 0 #5C656F4D;
+    border-radius: 12px;
+    padding: 13px 0 13px 15px;
+    min-height: 155px;
+}
+
+.review-card__inner {
+    flex-grow: 1;
+    box-shadow: 0 2px 1px 0 #00000005;
+    background-color: #F6F8FA;
+    border-radius: 12px;
+    padding: 5px 26px 17px 5px;
+}
+
+.review-card__header {
+    display: flex;
+    margin: 0 0 12px 0;
+    font-weight: 700;
+    justify-content: space-between;
+}
+
+.review-card__header-item {
+    display: flex;
+    gap: 10px;
+}
+
+.review-card__date {
+}
+
+.review-card__organization-name {
+}
+
+.review-card__author {
+    display: flex;
+    margin: 0 0 12px 0;
+    gap: 10px;
+    font-weight: 700;
+}
+
+.review-card__author-text {
+    display: block;
+}
+
+.review-card__text {
+    white-space: pre-line;
+}
+
+/* Карточка статистики (рейтинг) */
+.reviews-stats-card {
+    padding: 16px;
+    box-shadow: 0 1px 6px 0 #5C656F4D;
+    border-radius: 12px;
+    min-height: 155px;
+
+}
+
+.reviews-stats-card__rating-block {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 10px;
+    align-items: center;
+    padding: 10px 0 10px 0;
+    border-bottom: 2px solid #F1F4F7;
+    margin: 0 0 16px 0;
+}
+
+.reviews-stats-card__rating-value {
+    font-size: 40px;
+    line-height: 50px;
+}
+
+.reviews-stats-card__count {
+    font-weight: 700;
+}
+

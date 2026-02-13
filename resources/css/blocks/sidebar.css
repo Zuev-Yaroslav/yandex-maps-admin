@@ -1,0 +1,70 @@
+.sidebar {
+    z-index: 1;
+    background-color: #F6F8FA;
+    color: #363740;
+    display: flex;
+    flex-direction: column;
+    padding: 30px 15px;
+    box-shadow: 0 4px 3px #E5E5E5;
+    font-weight: 500;
+}
+
+.sidebar__logo {
+    padding-left: 14px;
+    margin: 0 0 14px 0;
+}
+
+.sidebar__account-name {
+    color: #6C757D;
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 0.2px;
+    margin: 0 0 40px 0;
+}
+
+.sidebar__nav-menu {
+    padding: 15px 0;
+    border-top: 1px solid #DCE4EA;
+
+}
+
+.sidebar__nav-title-block {
+    display: flex;
+    padding: 12px 14px;
+    margin: 0 0 8px 0;
+    gap: 12px;
+    background-color: #FFFFFF;
+    box-shadow: 0 2px 1px 0 #00000005;
+    border-radius: 12px;
+}
+
+.sidebar__nav-title-icon {
+
+}
+
+.sidebar__nav-title {
+    font-size: 16px;
+}
+
+.sidebar__nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar__nav-link {
+    display: block;
+    padding: 4px 0 4px 49px;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.sidebar__nav-link--active {
+    border-radius: 12px;
+    background-color: #FFFFFF;
+    box-shadow: 0 2px 1px 0 #00000005;
+    transition: background-color 0.2s ease-in-out;
+
+}

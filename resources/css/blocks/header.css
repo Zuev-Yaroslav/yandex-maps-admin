@@ -1,0 +1,16 @@
+.header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 14px 46px;
+    background-color: #fff;
+    border-bottom: 1px solid #DCE4EA
+}
+
+.header__logout-link {
+
+}
+
+.header__logout-icon {
+
+}

@@ -1,0 +1,39 @@
+services:
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./:/var/www/
+      - ./_docker/nginx/conf.d/:/etc/nginx/conf.d/
+    ports:
+      - "6276:80"
+    depends_on:
+      - app
+    container_name: yandex_map_reviews_nginx
+  app:
+    image: php-nodejs
+    build:
+      context: .
+      dockerfile: _docker/app/Dockerfile
+    volumes:
+      - ./:/var/www/
+    container_name: yandex_map_reviews_app
+    depends_on:
+      - db
+    ports:
+      - "3010:3010"
+  db:
+    image: postgres:18
+    restart: always
+    environment:
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_DATABASE}
+    volumes:
+        - ./tmp/db:/var/lib/postgresql/18/docker
+    ports:
+      - "${DB_PORT}:${DB_PORT}"
+    command:
+      - "postgres"
+      - "-c"
+      - 'port=${DB_PORT}'
+    container_name: yandex_map_reviews_db
