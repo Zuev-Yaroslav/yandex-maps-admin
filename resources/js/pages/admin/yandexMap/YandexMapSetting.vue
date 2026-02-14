@@ -31,7 +31,7 @@ defineOptions({
 
 <template>
     <div class="setting">
-        <h2 class="setting__title">Подключичить яндекс</h2>
+        <h2 class="setting__title">Подключить яндекс</h2>
         <label for="org-reviews-url" class="setting__org-reviews-url-label">
             Укажите ссылку на Яндекс, пример
             <a
