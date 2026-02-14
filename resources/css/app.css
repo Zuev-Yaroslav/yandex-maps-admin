@@ -4,7 +4,7 @@
 @import "./blocks/main.css";
 @import "./blocks/sidebar.css";
 @import "./blocks/setting.css";
-@import "./blocks/previews.css";
+@import "./blocks/reviews.css";
 @import 'tw-animate-css';
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';

@@ -1,12 +1,12 @@
 /* Основной контейнер и ссылки */
-.previews {
+.reviews {
     font-size: 12px;
     font-weight: 400;
     line-height: 14px;
 
 }
 
-.previews__yandex-map-link {
+.reviews__yandex-map-link {
     border-radius: 12px;
     gap: 6px;
     align-items: center;
@@ -16,7 +16,7 @@
     margin: 0 0 10px 0;
 }
 
-.previews__yandex-map-icon {
+.reviews__yandex-map-icon {
 }
 
 /* Обертка отзывов и список */
@@ -60,12 +60,18 @@
     display: flex;
     margin: 0 0 12px 0;
     font-weight: 700;
+    gap: 10px;
     justify-content: space-between;
 }
 
 .review-card__header-item {
     display: flex;
     gap: 10px;
+}
+
+.preview-card__yandex-map-icon {
+    min-width: 13px;
+    min-height: 16px;
 }
 
 .review-card__date {
