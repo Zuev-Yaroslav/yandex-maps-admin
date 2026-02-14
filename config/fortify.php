@@ -73,7 +73,11 @@ return [
     |
     */
 
-    'home' => 'admin/yandex-maps/setting',
+    'home' => 'dashboard',
+    'redirects' => [
+        'login' => 'admin.yandex-maps.setting',
+        'register' => 'admin.yandex-maps.setting',
+    ],
 
     /*
     |--------------------------------------------------------------------------

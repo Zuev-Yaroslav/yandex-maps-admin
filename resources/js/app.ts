@@ -4,10 +4,10 @@ import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import type { DefineComponent } from 'vue';
 import { createApp, h } from 'vue';
 import '../css/app.css';
+import vue3StarRatings from "vue3-star-ratings";
 import { ZiggyVue } from 'ziggy-js';
 import { initializeTheme } from './composables/useAppearance';
 import "@fontsource/mulish";
-import vue3StarRatings from "vue3-star-ratings";
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 window.axios = axios;

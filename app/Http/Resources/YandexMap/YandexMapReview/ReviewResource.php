@@ -18,17 +18,17 @@ class ReviewResource extends JsonResource
     {
         return [
             'author' => $this['author'] ?? null,
-//            'businessComment' => $this['businessComment'],
-//            'businessId' => $this['businessId'],
-//            'photos' => $this['photos'],
+            //            'businessComment' => $this['businessComment'],
+            //            'businessId' => $this['businessId'],
+            //            'photos' => $this['photos'],
             'rating' => $this['rating'] ?? null,
-//            'reactions' => $this['reactions'],
+            //            'reactions' => $this['reactions'],
             'reviewId' => $this['reviewId'] ?? null,
             'text' => $this['text'] ?? null,
-//            'textLanguage' => $this['textLanguage'],
-//            'textTranslations' => $this['textTranslations'],
+            //            'textLanguage' => $this['textLanguage'],
+            //            'textTranslations' => $this['textTranslations'],
             'updatedTime' => (new Carbon($this['updatedTime']))->format('d.m.Y H:i'),
-//            'videos' => $this['videos'],
+            //            'videos' => $this['videos'],
         ];
     }
 
@@ -41,11 +41,18 @@ class ReviewResource extends JsonResource
                 'aspects' => $additional['aspects'] ?? [],
                 'ratingData' => [
                     'ratingCount' => $additional['ratingData']['ratingCount'] ?? 0,
-                    'ratingValue' => round($additional['ratingData']['ratingValue'] ?? 0, 1),
+                    'ratingValue' => self::getFormattedRatingValue($additional['ratingData']['ratingValue']),
                     'reviewCount' => $additional['ratingData']['reviewCount'] ?? 0,
                 ],
                 'organizationName' => $additional['organizationName'] ?? null,
             ],
         ];
+    }
+
+    private static function getFormattedRatingValue($value): string
+    {
+        $ratingValue = (float) $value ?? 0;
+
+        return number_format($ratingValue, 1, '.', '');
     }
 }

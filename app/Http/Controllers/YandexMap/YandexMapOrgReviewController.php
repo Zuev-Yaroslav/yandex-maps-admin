@@ -15,8 +15,10 @@ class YandexMapOrgReviewController extends Controller
     {
         $yandexMapSetting = auth()->user()->yandexMapSetting;
         $reviewsRawData = $yandexMapSetting ? OrgReviewService::index($yandexMapSetting) : null;
-        $reviews = ReviewResource::collection($reviewsRawData['reviews'] ?? [])
-            ->additional(ReviewResource::getMeta($reviewsRawData ? $reviewsRawData->forget('reviews') : collect()));
+        $reviews = isset($reviewsRawData['reviews'])
+            ? ReviewResource::collection($reviewsRawData['reviews'])
+                ->additional(ReviewResource::getMeta($reviewsRawData->forget('reviews')))
+            : [];
         $yandexMapSetting = $yandexMapSetting ? YandexMapSettingResource::make($yandexMapSetting)->resolve() : null;
 
         return inertia('admin/yandexMap/review/YandexMapReviewIndex', compact('reviews', 'yandexMapSetting'));

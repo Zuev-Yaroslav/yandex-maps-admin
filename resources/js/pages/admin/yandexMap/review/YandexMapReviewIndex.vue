@@ -5,7 +5,7 @@ import RatingStarIcon from '@/components/icons/RatingStarIcon.vue';
 import YandexMapIcon from '@/components/icons/YandexMapIcon.vue';
 import AdminLayout from '@/layouts/AdminLayout.vue';
 
-defineProps({
+const props = defineProps({
     reviews: {
         required: false,
         type: Object,
@@ -15,28 +15,29 @@ defineProps({
         type: Object,
     },
 })
+const localReviews = ref({ ...props.reviews });
 defineOptions({
     layout: AdminLayout,
 });
 </script>
 
 <template>
-    <div v-if="reviews && yandexMapSetting" class="previews">
-        <a aria-label="Ссылка на организацию" :href="yandexMapSetting.org_reviews_url" target="_blank"  class="previews__yandex-map-link">
+    <div v-if="localReviews && yandexMapSetting" class="reviews">
+        <a aria-label="Ссылка на организацию" :href="yandexMapSetting.org_reviews_url" target="_blank"  class="reviews__yandex-map-link">
             <YandexMapIcon
-                class="previews__yandex-map-icon"
+                class="reviews__yandex-map-icon"
             />
             <span>Яндекс Карты</span>
         </a>
-        <div v-if="reviews" class="reviews__wrapper">
+        <div class="reviews__wrapper">
             <ul class="reviews-list">
-                <li :key="review.reviewId" v-for="review in reviews.data" class="reviews-list__item">
+                <li :key="review.reviewId" v-for="review in localReviews.data" class="reviews-list__item">
                     <div class="review-card">
                         <div class="review-card__inner">
                             <div class="review-card__header">
                                 <div class="review-card__header-item">
                                     <span class="review-card__date">{{ review.updatedTime }}</span>
-                                    <span class="review-card__organization-name">{{ reviews.meta.organizationName }}</span>
+                                    <span class="review-card__organization-name">{{ localReviews.meta.organizationName }}</span>
                                     <YandexMapIcon
                                         class="preview-card__yandex-map-icon"
                                     />
@@ -65,9 +66,9 @@ defineOptions({
             </ul>
             <div class="reviews-stats-card">
                 <div class="reviews-stats-card__rating-block">
-                    <span class="reviews-stats-card__rating-value">{{ reviews.meta.ratingData.ratingValue }}</span>
+                    <span class="reviews-stats-card__rating-value">{{ localReviews.meta.ratingData.ratingValue }}</span>
                     <vue3-star-ratings
-                        v-model="reviews.meta.ratingData.ratingValue"
+                        v-model="localReviews.meta.ratingData.ratingValue"
                         :star-size="24"
                         :custom-svg="RatingStarIcon"
                         inactiveColor="#FFFFFF"
@@ -75,9 +76,10 @@ defineOptions({
                         :disable-click="true"
                     />
                 </div>
-                <p class="reviews-stats-card__count">Всего отзывов: {{ reviews.meta.ratingData.reviewCount }}</p>
+                <p class="reviews-stats-card__count">Всего отзывов: {{ localReviews.meta.ratingData.reviewCount }}</p>
             </div>
         </div>
+        <p v-if="localReviews.meta.params.count > localReviews.meta.params.limit" class="font-semibold mt-5">Максимум отзывов на этой странице {{ reviews.meta.params.limit }}</p>
     </div>
     <p v-else class="font-semibold">Укажите ссылку в Настройке</p>
 </template>
