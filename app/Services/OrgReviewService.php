@@ -34,7 +34,9 @@ class OrgReviewService
         $sessionId = ReviewHtmlParser::getSessionId($html);
         if (! $sessionId) {
             Log::info('Append proxy');
-            $html = $orgReviewWebClient->appendProxy()->fetchReviewsHtml($orgId);
+            $html = $orgReviewWebClient
+                ->appendProxy(ProxyService::getWorkingProxyUrl())
+                ->fetchReviewsHtml($orgId);
             $sessionId = ReviewHtmlParser::getSessionId($html);
             HttpWebException::checkSessionIdOnNull($sessionId, $html);
             Log::info('Proxy is working');
@@ -45,6 +47,7 @@ class OrgReviewService
         self::appendSignatureS($params);
 
         $reviews = $orgReviewApiClient->fetchReviews($params);
+        Log::info('reviews', $reviews->toArray());
         ReviewException::checkEmptyReviews($reviews->toArray());
         $reviews['ratingData'] = ReviewHtmlParser::getRatingData($html);
         $reviews['organizationName'] = ReviewHtmlParser::getOrganizationName(new Crawler($html));

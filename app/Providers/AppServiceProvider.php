@@ -30,7 +30,7 @@ class AppServiceProvider extends ServiceProvider
             return Http::withOptions(['cookies' => $cookieJar])
                 ->acceptJson()
                 ->timeout(100)
-                ->connectTimeout(60)
+                ->connectTimeout(30)
                 ->baseUrl('https://yandex.ru/maps/api/business/');
         });
         Http::macro('webYaMap', function () use ($cookieJar) {
@@ -51,7 +51,7 @@ class AppServiceProvider extends ServiceProvider
                     'Sec-Fetch-Site' => 'same-origin',
                     'Upgrade-Insecure-Requests' => '1',
                 ]))
-                ->timeout(100)->connectTimeout(60)->baseUrl('https://yandex.ru/maps/');
+                ->timeout(60)->connectTimeout(2)->baseUrl('https://yandex.ru/maps/');
         });
 
         $this->configureDefaults();
