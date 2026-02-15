@@ -61,7 +61,7 @@ class OrgReviewService
         string $sessionId,
         int $page = 1,
         int $limit = 50,
-        string $ranking = 'by_relevance_org',
+        string $ranking = 'by_time',
         string $locale = 'ru_RU',
     ): array {
         return [
