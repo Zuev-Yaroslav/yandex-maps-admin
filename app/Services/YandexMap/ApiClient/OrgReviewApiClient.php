@@ -10,7 +10,6 @@ class OrgReviewApiClient extends BaseApiClient
     public function fetchReviews(array $params): ?array
     {
         $response = $this->http->get('fetchReviews', $params);
-        Log::info($response->getStatusCode(), $response->collect()->toArray());
 
         return $response->json('data');
     }

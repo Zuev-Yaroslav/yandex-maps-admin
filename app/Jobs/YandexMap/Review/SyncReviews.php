@@ -20,7 +20,7 @@ class SyncReviews implements ShouldQueue
         private readonly string $businessId,
         private readonly Subsidiary $subsidiary,
         private readonly string $sessionId,
-        private int $startedPage,
+        private readonly int $startedPage,
     ) {
         //
     }
