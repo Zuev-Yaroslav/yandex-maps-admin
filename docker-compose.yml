@@ -37,3 +37,15 @@ services:
       - "-c"
       - 'port=${DB_PORT}'
     container_name: yandex_map_reviews_db
+  supervisor_worker:
+    image: php-nodejs
+    build:
+      context: .
+      dockerfile: _docker/app/Dockerfile
+    restart: always
+    volumes:
+      - .:/var/www
+    depends_on:
+      - db
+    command: [ "/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf" ]
+    container_name: yandex_map_reviews_supervisor_worker

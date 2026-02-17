@@ -32,6 +32,7 @@
     },
     "dependencies": {
         "@fontsource/mulish": "^5.2.8",
+        "@heroicons/vue": "^2.2.0",
         "@inertiajs/vue3": "^2.3.7",
         "@vueuse/core": "^12.8.2",
         "class-variance-authority": "^0.7.1",
