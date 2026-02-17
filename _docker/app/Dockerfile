@@ -1,6 +1,7 @@
 FROM php:8.5-fpm
 
 RUN apt-get update && apt-get install -y \
+      supervisor \
       curl \
       procps \
       nano \
@@ -20,6 +21,7 @@ RUN apt-get update && apt-get install -y \
       rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 COPY ./_docker/app/php.ini /usr/local/etc/php/conf.d/php.ini
+COPY ./supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # Install composer
 ENV COMPOSER_ALLOW_SUPERUSER=1
