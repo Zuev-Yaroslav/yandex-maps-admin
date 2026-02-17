@@ -53,7 +53,7 @@ class AppServiceProvider extends ServiceProvider
                     'Sec-Fetch-Site' => 'same-origin',
                     'Upgrade-Insecure-Requests' => '1',
                 ]))
-                ->timeout(60)->connectTimeout(5)->baseUrl('https://yandex.ru/maps/');
+                ->timeout(60)->connectTimeout(2)->baseUrl('https://yandex.ru/maps/');
         });
         Collection::macro('toSnakeKeys', function () {
             return $this->mapWithKeys(function ($value, $key) {
