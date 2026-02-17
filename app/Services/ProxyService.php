@@ -15,7 +15,7 @@ class ProxyService
         return array_unique(Storage::json('proxies.json'));
     }
 
-    public static function getWorkingProxyUrl(): string
+    public static function  getWorkingProxyUrl(): string
     {
         if (is_null(self::$proxies)) {
             self::$proxies = self::getProxies();
@@ -26,7 +26,7 @@ class ProxyService
         }
         $maxIndex = count(self::$proxies) - 1;
         $index = rand(0, $maxIndex);
-        $url = 'http://'.self::$proxies[$index];
+        $url = 'http://'.self::$proxies[$index] ?? '127.0.0.1:3987'; // иногда непонятным образом индекс не найден
         unset(self::$proxies[$index]);
         self::$proxies = array_values(self::$proxies);
         Log::info($url);

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\YandexMap;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\YandexMap\YandexMapSetting\UpdateRequest;
-use App\Http\Resources\YandexMap\YandexMapSetting\YandexMapSettingResource;
+use App\Http\Resources\YandexMap\Setting\YandexMapSettingResource;
 use App\Models\YandexMapSetting;
 use App\Services\YandexMapSettingService;
 use Illuminate\Support\Facades\Cache;

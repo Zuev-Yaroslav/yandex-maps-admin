@@ -1,12 +1,17 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { reactive, ref } from 'vue';
 import Vue3StarRatings from 'vue3-star-ratings';
 import RatingStarIcon from '@/components/icons/RatingStarIcon.vue';
 import YandexMapIcon from '@/components/icons/YandexMapIcon.vue';
+import PaginationComponent from '@/components/pagination/PaginationComponent.vue';
 import AdminLayout from '@/layouts/AdminLayout.vue';
 
 const props = defineProps({
     reviews: {
+        required: false,
+        type: Object,
+    },
+    subsidiary: {
         required: false,
         type: Object,
     },
@@ -16,13 +21,17 @@ const props = defineProps({
     },
 })
 const localReviews = ref({ ...props.reviews });
+const localSubsidiary = ref({ ...props.subsidiary });
+const queryParams = reactive({
+    page: route().params.page || null
+})
 defineOptions({
     layout: AdminLayout,
 });
 </script>
 
 <template>
-    <div v-if="localReviews && yandexMapSetting" class="reviews">
+    <div v-if="localReviews && yandexMapSetting && subsidiary" class="reviews">
         <a aria-label="Ссылка на организацию" :href="yandexMapSetting.org_reviews_url" target="_blank"  class="reviews__yandex-map-link">
             <YandexMapIcon
                 class="reviews__yandex-map-icon"
@@ -37,7 +46,7 @@ defineOptions({
                             <div class="review-card__header">
                                 <div class="review-card__header-item">
                                     <span class="review-card__date">{{ review.updatedTime }}</span>
-                                    <span class="review-card__organization-name">{{ localReviews.meta.organizationName }}</span>
+                                    <span class="review-card__organization-name">{{ localSubsidiary.name }}</span>
                                     <YandexMapIcon
                                         class="preview-card__yandex-map-icon"
                                     />
@@ -66,9 +75,9 @@ defineOptions({
             </ul>
             <div class="reviews-stats-card">
                 <div class="reviews-stats-card__rating-block">
-                    <span class="reviews-stats-card__rating-value">{{ localReviews.meta.ratingData.ratingValue }}</span>
+                    <span class="reviews-stats-card__rating-value">{{ localSubsidiary.ratingValue }}</span>
                     <vue3-star-ratings
-                        v-model="localReviews.meta.ratingData.ratingValue"
+                        v-model="localSubsidiary.ratingValue"
                         :star-size="24"
                         :custom-svg="RatingStarIcon"
                         inactiveColor="#FFFFFF"
@@ -76,12 +85,17 @@ defineOptions({
                         :disable-click="true"
                     />
                 </div>
-                <p class="reviews-stats-card__count">Всего отзывов: {{ localReviews.meta.ratingData.reviewCount }}</p>
+                <p class="reviews-stats-card__count">Всего отзывов: {{ localSubsidiary.reviewCount }}</p>
             </div>
         </div>
-        <p v-if="localReviews.meta.params.count > localReviews.meta.params.limit" class="font-semibold mt-5">Максимум отзывов на этой странице {{ reviews.meta.params.limit }}</p>
+        <PaginationComponent
+            :meta="localReviews.meta"
+            route-name="admin.yandex-maps.reviews.index"
+            :query-params="queryParams"
+        />
+<!--        <p v-if="localReviews.meta.params.count > localReviews.meta.params.limit" class="font-semibold mt-5">Максимум отзывов на этой странице {{ reviews.meta.params.limit }}</p>-->
     </div>
-    <p v-else class="font-semibold">Укажите ссылку в Настройке</p>
+    <p v-else class="font-semibold">Укажите ссылку в Настройке и сохраните, чтобы получить отзывы</p>
 </template>
 
 <style scoped>

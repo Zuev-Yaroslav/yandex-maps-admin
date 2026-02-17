@@ -4,10 +4,12 @@ namespace App\Providers;
 
 use Carbon\CarbonImmutable;
 use GuzzleHttp\Cookie\CookieJar;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Str;
 use Illuminate\Validation\Rules\Password;
 
 class AppServiceProvider extends ServiceProvider
@@ -51,7 +53,16 @@ class AppServiceProvider extends ServiceProvider
                     'Sec-Fetch-Site' => 'same-origin',
                     'Upgrade-Insecure-Requests' => '1',
                 ]))
-                ->timeout(60)->connectTimeout(2)->baseUrl('https://yandex.ru/maps/');
+                ->timeout(60)->connectTimeout(5)->baseUrl('https://yandex.ru/maps/');
+        });
+        Collection::macro('toSnakeKeys', function () {
+            return $this->mapWithKeys(function ($value, $key) {
+                if (is_array($value) || $value instanceof Collection) {
+                    $value = collect($value)->toSnakeKeys()->all();
+                }
+
+                return [Str::snake($key) => $value];
+            });
         });
 
         $this->configureDefaults();

@@ -15,6 +15,8 @@ trait HasRender
             'message' => $this->getMessage(),
         ];
 
-        return inertia('admin/Error', compact('errors'));
+        return ($request->acceptsJson())
+            ? response()->json(['errors' => $errors], $this->getCode())
+            : inertia('admin/Error', compact('errors'));
     }
 }

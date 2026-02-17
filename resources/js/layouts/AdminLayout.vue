@@ -42,7 +42,7 @@ const logout = () => {
                     >
                         <Link
                             class="sidebar__nav-link"
-                            :class="{ 'sidebar__nav-link--active' : $page.url === route('admin.yandex-maps.reviews.index', {}, false) }"
+                            :class="{ 'sidebar__nav-link--active' : $page.url.startsWith(route('admin.yandex-maps.reviews.index', {}, false)) }"
                             :href="route('admin.yandex-maps.reviews.index')"
                         >Отзывы</Link>
                     </li>
@@ -52,7 +52,7 @@ const logout = () => {
                         <Link
                             class="sidebar__nav-link"
                             :href="route('admin.yandex-maps.setting')"
-                            :class="{ 'sidebar__nav-link--active' : $page.url === route('admin.yandex-maps.setting', {}, false) }"
+                            :class="{ 'sidebar__nav-link--active' : $page.url.startsWith(route('admin.yandex-maps.setting', {}, false)) }"
                         >Настройка</Link>
                     </li>
                 </ul>

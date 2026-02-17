@@ -7,12 +7,12 @@ use Illuminate\Support\Facades\Log;
 
 class OrgReviewApiClient extends BaseApiClient
 {
-    public function fetchReviews(array $params): Collection
+    public function fetchReviews(array $params): ?array
     {
         $response = $this->http->get('fetchReviews', $params);
-        Log::info('response', $response->json());
+        Log::info($response->getStatusCode(), $response->collect()->toArray());
 
-        return $response->collect('data');
+        return $response->json('data');
     }
 
     public function fetchAndGetCsrfToken(): string

@@ -17,7 +17,7 @@ class YandexMapSetting extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function getOrganizationIdAttribute(): string
+    public function getSubsidiaryIdAttribute(): string
     {
         preg_match("/\/org\/.*\/(\d+)/", $this->org_reviews_url, $matches);
         return $matches[1];

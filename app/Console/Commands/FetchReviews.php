@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Services\OrgReviewService;
+use App\Services\YandexMapReviewService;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
@@ -29,7 +29,7 @@ class FetchReviews extends Command
      */
     public function handle()
     {
-        $reviews = OrgReviewService::getReviews('10661349235');
+        $reviews = YandexMapReviewService::crawlAndFetchReviews('1010501395', 11);
 
         dump($reviews);
     }

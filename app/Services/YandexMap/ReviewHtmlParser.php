@@ -6,11 +6,11 @@ use Symfony\Component\DomCrawler\Crawler;
 
 class ReviewHtmlParser
 {
-    public static function getSessionId(string $html): ?string
+    public static function getSessionId(string $html): string
     {
         preg_match('/"sessionId":"(.*?)"/', $html, $matches);
 
-        return $matches[1] ?? null;
+        return $matches[1] ?? '';
     }
 
     public static function getRatingData(string $html): ?array
