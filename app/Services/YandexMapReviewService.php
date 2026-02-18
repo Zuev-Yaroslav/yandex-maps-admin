@@ -46,11 +46,7 @@ class YandexMapReviewService
             Log::info('Proxy is working');
         }
 
-        $csrfToken = $orgReviewApiClient->fetchAndGetCsrfToken();
-        $params = self::getParams($orgId, $csrfToken, self::$sessionId, $page);
-        self::appendSignatureS($params);
-
-        $reviews = $orgReviewApiClient->fetchReviews($params);
+        $reviews = self::fetchReviewsWithSessionId($orgId, self::$sessionId);
         ReviewException::checkEmptyReviews($reviews);
         $reviews['ratingData'] = ReviewHtmlParser::getRatingData($html);
         $reviews['subsidiaryName'] = ReviewHtmlParser::getOrganizationName(new Crawler($html));
