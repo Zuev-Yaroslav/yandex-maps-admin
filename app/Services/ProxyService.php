@@ -25,8 +25,7 @@ class ProxyService
         }
         $maxIndex = count(self::$proxies) - 1;
         $index = rand(0, $maxIndex);
-        $domain = (isset(self::$proxies[$index])) ? self::$proxies[$index] : '127.0.0.1:3987';
-        $url = 'http://'.$domain; // иногда непонятным образом индекс не найден
+        $url = (isset(self::$proxies[$index])) ? self::$proxies[$index] : 'http://127.0.0.1:3987';
         unset(self::$proxies[$index]);
         self::$proxies = array_values(self::$proxies);
         Log::info($url);
