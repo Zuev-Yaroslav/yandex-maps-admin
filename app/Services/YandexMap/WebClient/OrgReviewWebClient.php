@@ -27,6 +27,7 @@ class OrgReviewWebClient extends BaseWebClient
     {
         $this->http->withOptions([
             'proxy' => $proxyUrl ?? config('proxy.url'),
+            'verify' => false,
         ]);
 
         return $this;
