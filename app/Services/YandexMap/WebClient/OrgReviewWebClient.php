@@ -28,6 +28,9 @@ class OrgReviewWebClient extends BaseWebClient
         $this->http->withOptions([
             'proxy' => $proxyUrl ?? config('proxy.url'),
             'verify' => false,
+            'curl' => [
+                CURLOPT_IPRESOLVE => CURL_IPRESOLVE_V4, // Принудительно IPv4
+            ],
         ]);
 
         return $this;

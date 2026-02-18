@@ -19,7 +19,8 @@
         "spatie/browsershot": "^5.2",
         "symfony/css-selector": "^8.0",
         "symfony/dom-crawler": "^8.0",
-        "tightenco/ziggy": "^2.6"
+        "tightenco/ziggy": "^2.6",
+        "ext-curl": "*"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
