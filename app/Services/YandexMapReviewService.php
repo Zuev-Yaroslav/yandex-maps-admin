@@ -32,14 +32,13 @@ class YandexMapReviewService
     public static function crawlAndFetchReviews(string $orgId, int $page = 1): array
     {
         $orgReviewWebClient = OrgReviewWebClient::make();
-        $orgReviewApiClient = OrgReviewApiClient::make();
 
         $html = $orgReviewWebClient->fetchReviewsHtml($orgId);
         self::$sessionId = ReviewHtmlParser::getSessionId($html);
         if (! self::$sessionId) {
             Log::info('Append proxy');
             $html = $orgReviewWebClient
-                ->appendProxy(ProxyService::getWorkingProxyUrl())
+                ->appendProxy(config('proxy.url'))
                 ->fetchReviewsHtml($orgId);
             self::$sessionId = ReviewHtmlParser::getSessionId($html);
             HttpWebException::checkSessionIdOnNull(self::$sessionId, $html);

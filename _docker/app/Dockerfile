@@ -13,6 +13,7 @@ RUN apt-get update && apt-get install -y \
       git && \
       curl -fsSL https://deb.nodesource.com/setup_24.x | bash - && \
       apt-get install -y nodejs && \
+      npm install -g npm@latest && \
       docker-php-ext-install pdo_pgsql && \
       docker-php-ext-install bcmath && \
       docker-php-ext-install gd && \

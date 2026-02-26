@@ -22,10 +22,10 @@ class ReviewHtmlParser
         return null;
     }
 
-    public static function getOrganizationName(Crawler $crawler): ?string
+    public static function getOrganizationName(Crawler $crawler): string
     {
         return $crawler->filter('.orgpage-header-view__header')->count() > 0
             ? $crawler->filter('.orgpage-header-view__header')->text()
-            : null;
+            : 'Subsidiary not found';
     }
 }
