@@ -27,6 +27,7 @@ class ReviewRepository
                 'textTranslations' => $data['textTranslations'] ?? '',
                 'updatedTime' => $data['updatedTime'] ?? '',
                 'videos' => $data['videos'] ?? '',
+                'subsidiary_id' => $data['subsidiary_id'],
             ],
         );
     }
