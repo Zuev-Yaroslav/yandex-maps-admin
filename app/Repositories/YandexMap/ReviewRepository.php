@@ -14,7 +14,20 @@ class ReviewRepository
     {
         return Review::updateOrCreate(
             ['reviewId' => $data['reviewId']],
-            $data,
+            [
+                'author' => $data['author'],
+                'businessComment' => $data['businessComment'],
+                'businessId' => $data['businessId'],
+                'photos' => $data['photos'],
+                'rating' => $data['rating'],
+                'reactions' => $data['reactions'],
+                'reviewId' => $data['reviewId'],
+                'text' => $data['text'],
+                'textLanguage' => $data['textLanguage'],
+                'textTranslations' => $data['textTranslations'],
+                'updatedTime' => $data['updatedTime'],
+                'videos' => $data['videos'],
+            ],
         );
     }
 }
